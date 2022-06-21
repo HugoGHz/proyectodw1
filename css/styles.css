@@ -70,12 +70,47 @@ body{
     transition: all 300ms;
 }
 
+#logo:hover{
+    border-radius: 2px;
+    color: black;
+    background-color: #ccc;
+}
+
 #logo .gear{
     display: block;
     float: left;
     font-size: 30px;
     margin-top: 8px;
     margin-left: 26px;
+    animation-name: rotate-gear;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes rotate-gear{
+    from{
+        transform: rotateZ(0deg);
+    }
+    to{
+        transform: rotateZ(360deg);
+    }
+}
+
+#logo:hover .gear{
+    animation: fromBellow 500ms linear;
+}
+
+@keyframes fromBellow{
+    0%{
+        transform: translateY(0%);
+    }
+    50%{
+        transform: translateY(200%);
+    }
+    100%{
+        transform: translateY(0%);
+    }
 }
 
 #logo h3{
@@ -85,6 +120,19 @@ body{
     margin-top: 5px;
     margin-right: 65px;
     transition: all 300ms;
+}
+
+#logo:hover h3{
+    animation: fromRight 500ms linear;
+}
+
+@keyframes fromRight{
+    from{
+        transform: translateX(200%);
+    }
+    to{
+        transform: translateX(0%);
+    }
 }
 
 /*ESTILOS MENU*/
@@ -123,6 +171,17 @@ body{
     background: url("../img/bakbaner.png");
     background-position: -250px -190px;
     margin: 20px auto;
+    overflow: hidden;
+    animation: backBanner 10s linear;
+}
+
+@keyframes backBanner{
+    0%{
+        background-position: 0px 0px;
+    }
+    100%{
+        background-position: -250px -190px;
+    }
 }
 
 #banner h1{
@@ -136,6 +195,30 @@ body{
     text-shadow: 2px 2px 1px black;
     text-align: center;
     margin: 27px auto;
+    animation: showText 10s linear;
+}
+
+@keyframes showText{
+    0%{
+        transform: translateX(-600%) scale(5, 5);
+        opacity: 1;
+    }
+    50%{
+        transform: translateX(600%) scale(5, 5);
+        opacity: 1;
+    }
+    75%{
+        transform: translateX(-600%) scale(5, 5);
+        text-shadow: none;
+        color: transparent;
+        opacity: 0;
+    }
+    100%{
+        transform: translateX(0%) scale(1, 1);
+        text-shadow: 2px 2px 1px black;
+        color: white;
+        opacity: 1;
+    }
 }
 
 /*ESTILOS TARJETAS*/
@@ -150,6 +233,11 @@ body{
     margin: 17px;
     margin-top: 40px;
     cursor: pointer;
+    transition: all 300ms;
+}
+
+.card:hover{
+    background: black;
 }
 
 .card .icon{
@@ -160,6 +248,22 @@ body{
     line-height: 130px;
     text-align: center;
     margin: 0px auto;
+    transition: all 300ms;
+}
+
+.card:hover .icon{
+    font-size: 70px;
+    color: #37bcf9;
+    animation: showIcon 300ms linear;
+}
+
+@keyframes showIcon{
+    from{
+        transform: translateY(-200%);
+    }
+    to{
+        transform: translateY(0%);
+    }
 }
 
 .card .category{
@@ -170,6 +274,23 @@ body{
     font-weight: bold;
     text-align: center;
     color: #00538c;
+    transition: all 300ms;
+}
+
+.card:hover .category{
+    color: white;
+    animation: showCategory 400ms linear;
+}
+
+@keyframes showCategory{
+    from{
+        transform: translateY(-300%);
+        color: black;
+    }
+    to{
+        transform: translateY(0%);
+        color: white;
+    }
 }
 
 .card .description{
@@ -177,9 +298,26 @@ body{
     font-size: 15px;
     text-align: center;
     color: #0078c8;
+    transition: all 300ms;
 }
 
-/*Estilos de la barra lateral*/
+.card:hover .description{
+    color: white;
+    animation: showDescription 400ms linear;
+}
+
+@keyframes showDescription{
+    from{
+        transform: translateY(300%);
+        color: black;
+    }
+    to{
+        transform: translateY(0%);
+        color: white;
+    }
+}
+
+/*ESTILOS DE LA BARRA LATERAL*/
 #lateral{
     width: 300px;
     min-height: 1200px;
@@ -352,7 +490,33 @@ aside h3{
     margin-bottom: 20px;
 }
 
-/*Estilos de los articulos*/
+#social .overlay{
+    display: block;
+    height: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-shadow: 0px 0px 1px #ccc;
+    border: 3px solid white;
+    box-shadow: 0px 0px 4px #ccc;
+    background: #f4f7fe;
+    position: absolute;
+    padding: 5px;
+    margin-left: 70px;
+    margin-top: -52px;
+    cursor: pointer;
+    transform: translateX(-80%);
+    opacity: 0;
+    transition: all 400ms;
+}
+
+#social div:hover .overlay{
+    opacity: 1;
+    transform: translateX(0%);
+}
+
+/*ESTILOS DE LOS ARTICULOS*/
 #articles{
     width: 860px;
     float: left;
@@ -429,6 +593,7 @@ aside h3{
     line-height: 100px;
     margin-top: 60px;
     text-align: center;
+    transition: all 1s;
 }
 
 #blog a{
@@ -438,9 +603,41 @@ aside h3{
     letter-spacing: 3px;
     color: #00538c;
     text-decoration: none;
+    transition: all 1s;
 }
 
-/*Estilos del pie de pagina*/
+#blog:hover{
+    background-color: #333;
+    border: 10px solid #37bcf9;
+    border-radius: 240px;
+    box-shadow: 0px 0px 10px gray;
+    animation: blink 10s infinite linear;
+}
+
+@keyframes blink{
+    0%{
+        border: 10px solid #37bcf9;
+    }
+    25%{
+        border: 10px solid green;
+    }
+    50%{
+        border: 10px solid yellow;
+    }
+    75%{
+        border: 10px solid white;
+    }
+    100%{
+        border: 10px solid #37bcf9;
+    }
+}
+
+#blog:hover a{
+    text-shadow: 1px 1px 1px black, 1px 2px 1px black, 1px 3px 1px black, 1px 4px 1px black, 1px 5px 1px black, 1px 6px 1px black;
+    color: white;
+}
+
+/*ESTILOS DEL PIE DE PAGINA*/
 #footer{
     width: 100%;
     height: 470px;
@@ -494,6 +691,13 @@ aside h3{
 #footer ul li a{
     display: block;
     height: 40px;
+    transition: all 300ms;
+}
+
+#footer ul li:hover a{
+    padding-left: 40px;
+    color: white;
+    width: 100%;
 }
 
 #footer iframe{
